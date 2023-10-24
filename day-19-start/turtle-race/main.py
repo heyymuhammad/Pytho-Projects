@@ -3,38 +3,33 @@ import random
 
 screen = Screen()
 screen.setup(width=500, height=400)
-user_bet = screen.textinput(title="Make your Bet.", prompt="Which turtle will win the race? Choose a color.")
-colors = ["red", "purple", "orange", "green", "yellow", "blue"]
-y_positions = [-100, -70, -40, -10, 20, 50]
-is_race_on = False
-all_turtles = []
+user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter the color: ")
+colors = ["red", "yellow", "purple", "orange", "blue"]
 
-for turtle_index in range(0, 6):
+
+i= -100
+turtles = []
+continue_game = True
+
+for element in colors:
+    new_turtle = element
     new_turtle = Turtle(shape="turtle")
-    new_turtle.color(colors[turtle_index])
+    new_turtle.color(element)
+    turtles.append(new_turtle)
     new_turtle.penup()
-    new_turtle.goto(x=-230, y=y_positions[turtle_index])
-    all_turtles.append(new_turtle)
+    new_turtle.goto(-230, i)
+    i+=50
 
-if user_bet:
-    is_race_on =True    
-
-
-while is_race_on:
-
-    for turtle in all_turtles:
-        if turtle.xcor() > 230:
-            is_race_on = False
-            winning_color = turtle.pencolor()
-            if winning_color == user_bet:
-                print(f"You've won! The {winning_color} turtle is the winning color.")
-                screen.textinput(title="Exit", prompt=f"You've won! The {winning_color} turtle is the winning color.\nPress any key to exit.")
-                turtle.bye()
+while continue_game:
+    for object in turtles:
+        if object.xcor() >= 230:
+            continue_game= False
+            if user_bet == object.pencolor():
+                print(f"You won! {object.pencolor()} won the game.")
             else:
-                print(f"You've lost! The {winning_color} turtle is the winning color.")
-                screen.textinput(title="Exit", prompt=f"You've lost! The {winning_color} turtle is the winning color.\nPress any key to exit.")
-                turtle.bye()
-        spaces = random.randint(1,10)
-        turtle.forward(spaces)
+                print(f"You Lose! {object.pencolor()} won the game.")
+        else:
+            object.forward(random.randrange(0,10))
+
 
 screen.exitonclick()

@@ -42,8 +42,6 @@ while game_is_on:
     if ball.xcor() > 400:
         ball.reset_position()
         scoreboard.l_point()
-        
-
 
     #Out of range  
     if ball.xcor() < -400:

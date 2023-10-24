@@ -9,7 +9,7 @@ class Scoreboard(Turtle):
         
         self.color("white")
         self.score = 0
-        with open("./day-20-21-start/snake-game/data.txt") as data:
+        with open("./data.txt") as data:
             self.high_score = int(data.read())
         self.penup()
         self.goto(0, 260)
@@ -32,7 +32,7 @@ class Scoreboard(Turtle):
         
         if self.score > self.high_score:
             self.high_score = self.score
-            with open("./day-20-21-start/snake-game/data.txt", mode="w") as file:
+            with open("./data.txt", mode="w") as file:
                 file.write(f"{self.high_score}")
         self.score = 0
         self.update_scoreboard()

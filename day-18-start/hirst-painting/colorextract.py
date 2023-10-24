@@ -1,4 +1,4 @@
-mport turtle as turtle_module
+import turtle as turtle_module
 import random
 
 turtle_module.colormode(255)
@@ -22,11 +22,6 @@ for dot_count in range(1, number_of_dots + 1):
         tim.setheading(180)
         tim.forward(500)
         tim.setheading(0)
-
-
-
-
-
 
 
 
