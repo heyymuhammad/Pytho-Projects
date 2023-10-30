@@ -1,4 +1,5 @@
 import random
+import os
 
 with open(file="day-32-start/quotes.txt") as qt:
     qout_list = qt.readlines()
@@ -12,7 +13,7 @@ week_day = now.weekday()
 import smtplib
 
 my_email = "muawan541@gmail.com"
-password = "yrpd eawr mydz enqd"
+password = os.getenv("SMTP_PASS")
 
 if week_day:
     with smtplib.SMTP("smtp.gmail.com") as connection:
